@@ -150,10 +150,14 @@ public class TasksActivity extends AppCompatActivity {
         builder.setPositiveButton("Save", (dialog, which) -> {
             // Get new task title from input field
             String newTask = input.getText().toString();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+
 
             // Update task title and save to SharedPreferences
             if (taskListIU.contains(task)) {
                 taskListIU.remove(task);
+                editor.remove(task.getTask());
+                editor.apply();
                 taskAdapterIU.notifyDataSetChanged();
                 task.setTask(newTask);
                 task.setTaskId(1);
@@ -163,6 +167,8 @@ public class TasksActivity extends AppCompatActivity {
             }
             if (taskListINU.contains(task)) {
                 taskListINU.remove(task);
+                editor.remove(task.getTask());
+                editor.apply();
                 taskAdapterINU.notifyDataSetChanged();
                 task.setTask(newTask);
                 task.setTaskId(2);
@@ -172,6 +178,8 @@ public class TasksActivity extends AppCompatActivity {
             }
             if (taskListNIU.contains(task)) {
                 taskListNIU.remove(task);
+                editor.remove(task.getTask());
+                editor.apply();
                 taskAdapterNIU.notifyDataSetChanged();
                 task.setTask(newTask);
                 task.setTaskId(3);
@@ -181,6 +189,8 @@ public class TasksActivity extends AppCompatActivity {
             }
             if (taskListNINU.contains(task)) {
                 taskListNINU.remove(task);
+                editor.remove(task.getTask());
+                editor.apply();
                 taskAdapterNINU.notifyDataSetChanged();
                 task.setTask(newTask);
                 task.setTaskId(4);
